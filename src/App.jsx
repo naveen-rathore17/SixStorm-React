@@ -212,7 +212,7 @@ function VideoCard() {
         <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-yellow-400/20 via-transparent to-blue-600/20 pointer-events-none"></div>
 
         <iframe
-          src="https://allrounder-live5.pages.dev/star/star-1-hindi"
+          src="https://allrounderlive.in/hindi"
           className="w-full h-full"
           frameBorder="0"
           allow="autoplay; encrypted-media"
