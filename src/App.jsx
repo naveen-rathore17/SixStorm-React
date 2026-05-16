@@ -213,7 +213,8 @@ function VideoCard() {
 
         <iframe
           // src="https://allrounderlive.in/hindi"
-          src="https://tatticdn.pages.dev/CDN3/?ch=H1"
+          // src="https://tatticdn.pages.dev/CDN3/?ch=H1"
+          src="https://binge-giotv.pages.dev/player2?id=ss1h"
           className="w-full h-full"
           frameBorder="0"
           allow="autoplay; encrypted-media"
