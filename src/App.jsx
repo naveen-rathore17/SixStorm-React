@@ -141,19 +141,6 @@ function MatchBanner({ timeStr, hidden }) {
             HD Stream – Star Sports Hindi
           </span>
         </div>
-        {!hidden && (
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-gray-400">Match starts in</span>
-            <span className="bg-yellow-400 text-black font-black px-3 py-0.5 rounded-md font-mono tracking-widest text-xs">
-              {timeStr}
-            </span>
-          </div>
-        )}
-        {hidden && (
-          <span className="text-green-400 font-bold text-sm animate-pulse">
-            🟢 Match is LIVE
-          </span>
-        )}
       </div>
     </div>
   );
@@ -165,7 +152,7 @@ function Ticker() {
     "⚡ SixStorm – Best Sports Streaming",
     "🎯 HD Quality, No Buffering",
     "📱 Works on Mobile & Desktop",
-    "🔥 IPL 2025 Live on SixStorm",
+    "🔥 IPL 2026 Live on SixStorm",
     "🌐 Visit sixstorm-live-0kkp.onrender.com",
   ];
   const text = items.join("   ●   ");
@@ -184,8 +171,30 @@ function Ticker() {
   );
 }
 
+// ── Channel List ──
+const CHANNELS = [
+  {
+    id: "hindi",
+    name: "Star Sports 1 Hindi",
+    label: "Star Sports Hindi",
+    lang: "Hindi",
+    icon: "🟢",
+    src: "https://tatticdn.pages.dev/CDN3/?ch=H1",
+    badge: "Hindi",
+  },
+  {
+    id: "hindi2",
+    name: "Star Sports 2 Hindi",
+    label: "Star Sports Hindi",
+    lang: "Hindi",
+    icon: "🟢",
+    src: "https://tatticdn.pages.dev/CDN3/?ch=H2",
+    badge: "Hindi",
+  },
+];
+
 // ── Video Card ──
-function VideoCard() {
+function VideoCard({ activeChannel }) {
   return (
     <div className="w-full max-w-5xl mx-auto">
       {/* Card Header */}
@@ -193,7 +202,7 @@ function VideoCard() {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 bg-red-500 rounded-full shadow-[0_0_8px_#ef4444] animate-pulse"></span>
           <span className="text-white font-semibold text-sm">
-            Star Sports 1 – Hindi
+            {activeChannel.label}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -202,6 +211,9 @@ function VideoCard() {
           </span>
           <span className="text-xs text-gray-400 bg-white/10 px-2 py-0.5 rounded-full">
             Free
+          </span>
+          <span className="text-xs bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 px-2 py-0.5 rounded-full font-semibold">
+            {activeChannel.badge}
           </span>
         </div>
       </div>
@@ -212,8 +224,8 @@ function VideoCard() {
         <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-yellow-400/20 via-transparent to-blue-600/20 pointer-events-none"></div>
 
         <iframe
-          // src="https://allrounderlive.in/hindi"
-          src="https://tatticdn.pages.dev/CDN3/?ch=H1"
+          key={activeChannel.id}
+          src={activeChannel.src}
           className="w-full h-full"
           frameBorder="0"
           allow="autoplay; encrypted-media"
@@ -225,7 +237,7 @@ function VideoCard() {
       <div className="flex flex-wrap items-center gap-2 mt-3 px-1">
         {[
           "📡 Live Stream",
-          "🔊 Hindi Commentary",
+          `🔊 ${activeChannel.lang} Commentary`,
           "📺 HD 1080p",
           "⚡ Low Latency",
         ].map((b) => (
@@ -242,11 +254,7 @@ function VideoCard() {
 }
 
 // ── Sidebar Cards ──
-function Sidebar() {
-  const channels = [
-    { name: "Star Sports 1 HD", lang: "Hindi", active: true, icon: "🟢" },
-  ];
-
+function Sidebar({ activeId, onSelect }) {
   return (
     <div className="w-full lg:w-72 shrink-0 flex flex-col gap-4">
       {/* Channels */}
@@ -255,33 +263,37 @@ function Sidebar() {
           📺 Channels
         </h3>
         <div className="flex flex-col gap-2">
-          {channels.map((ch) => (
-            <div
-              key={ch.name}
-              className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
-                ch.active
-                  ? "bg-yellow-400/15 border border-yellow-400/40"
-                  : "bg-white/5 border border-transparent hover:border-white/20"
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-sm">{ch.icon}</span>
-                <div>
-                  <p
-                    className={`text-xs font-semibold ${ch.active ? "text-yellow-300" : "text-gray-300"}`}
-                  >
-                    {ch.name}
-                  </p>
-                  <p className="text-xs text-gray-500">{ch.lang}</p>
+          {CHANNELS.map((ch) => {
+            const isActive = ch.id === activeId;
+            return (
+              <div
+                key={ch.id}
+                onClick={() => onSelect(ch.id)}
+                className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
+                  isActive
+                    ? "bg-yellow-400/15 border border-yellow-400/40"
+                    : "bg-white/5 border border-transparent hover:border-white/20"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">{ch.icon}</span>
+                  <div>
+                    <p
+                      className={`text-xs font-semibold ${isActive ? "text-yellow-300" : "text-gray-300"}`}
+                    >
+                      {ch.name}
+                    </p>
+                    <p className="text-xs text-gray-500">{ch.lang}</p>
+                  </div>
                 </div>
+                {isActive && (
+                  <span className="text-[10px] bg-red-500 text-white px-1.5 py-0.5 rounded font-bold">
+                    LIVE
+                  </span>
+                )}
               </div>
-              {ch.active && (
-                <span className="text-[10px] bg-red-500 text-white px-1.5 py-0.5 rounded font-bold">
-                  LIVE
-                </span>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -381,7 +393,7 @@ function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/5 py-4 text-center text-gray-600 text-xs px-5">
         <p>
-          © 2025 <span className="text-yellow-400 font-bold">SixStorm</span>.
+          © 2026 <span className="text-yellow-400 font-bold">SixStorm</span>.
           For sports entertainment only. All streams are sourced from
           third-party providers.
         </p>
@@ -406,10 +418,14 @@ function Footer() {
 export default function App() {
   const { timeStr, hidden } = useCountdown();
   const [blocked, setBlocked] = useState(false);
+  const [activeChannelId, setActiveChannelId] = useState(CHANNELS[0].id);
 
   useEffect(() => {
     if (isSandboxedEnv()) setBlocked(true);
   }, []);
+
+  const activeChannel =
+    CHANNELS.find((c) => c.id === activeChannelId) || CHANNELS[0];
 
   return (
     <>
@@ -449,9 +465,9 @@ export default function App() {
           {/* Video + Sidebar Layout */}
           <div className="flex flex-col lg:flex-row gap-6 items-start">
             <div className="flex-1 min-w-0">
-              <VideoCard />
+              <VideoCard activeChannel={activeChannel} />
             </div>
-            <Sidebar />
+            <Sidebar activeId={activeChannelId} onSelect={setActiveChannelId} />
           </div>
         </main>
 
