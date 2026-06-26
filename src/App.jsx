@@ -191,6 +191,54 @@ const CHANNELS = [
     src: "https://tatticdn.pages.dev/CDN3/?ch=H2",
     badge: "Hindi",
   },
+
+  {
+    id: "English",
+    name: "Star Sports 1 English",
+    label: "Star Sports English",
+    lang: "English",
+    icon: "🟢",
+    src: "https://tatticdn.pages.dev/CDN3/?ch=E1",
+    badge: "English",
+  },
+
+  {
+    id: "English 2",
+    name: "Star Sports 2 English",
+    label: "Star Sports 2 English",
+    lang: "Hindi",
+    icon: "🟢",
+    src: "https://tatticdn.pages.dev/CDN3/?ch=E2",
+    badge: "English",
+  },
+
+  {
+    id: "DDSport",
+    name: "DD Sport HD",
+    label: "DD Sport HD",
+    lang: "Sports",
+    icon: "🟢",
+    src: "https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index.m3u8",
+    badge: "Sports",
+  },
+  {
+    id: "Sony Ten 3 Hindi",
+    name: "Sony Ten 3 Hindi",
+    label: "Sony Ten",
+    lang: "Sony Ten",
+    icon: "🟢",
+    src: "https://allrounderlive.in/hindi",
+    badge: "Sony Ten 3",
+  },
+  {
+    id: "willow",
+    name: "Willow Sports",
+    label: "willow",
+    lang: "willow",
+    icon: "🟢",
+    src: "https://amg01269-amg01269c1-sportstribal-emea-5204.playouts.now.amagi.tv/playlist/amg01269-willowtvfast-willowplus-sportstribalemea/playlist.m3u8",
+    badge: "willow sports",
+  },
 ];
 
 // ── Video Card ──
