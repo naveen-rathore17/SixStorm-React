@@ -101,6 +101,15 @@ const CHANNELS = [
     color: "#ef4444",
   },
   {
+    id: "GO USA",
+    name: "GO USA TV",
+    label: "GO USA TV",
+    lang: "English",
+    src: "https://brandusa-gousa-1-be.samsung.wurl.tv/playlist.m3u8",
+    badge: "Go USA",
+    color: "#ef4444",
+  },
+  {
     id: "willow",
     name: "Willow Sports",
     label: "Willow Sports",
