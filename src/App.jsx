@@ -66,6 +66,15 @@ const CHANNELS = [
     color: "#f97316",
   },
   {
+    id: "Star Sports 2",
+    name: "Star Sports 2",
+    label: "Star Sports 2",
+    lang: "Hindi",
+    src: "https://sonucdn-v5.pages.dev/star?id=H2HD",
+    badge: "Sports",
+    color: "#f97316",
+  },
+  {
     id: "Aaj Tak",
     name: "Aaj Tak",
     label: "Aaj Tak",
