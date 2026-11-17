@@ -57,12 +57,12 @@ const CHANNELS = [
   },
 
   {
-    id: "zee",
-    name: "Zee Cinema HD",
-    label: "Zee Cinema HD",
+    id: "Star Sports 1",
+    name: "Star Sports 1",
+    label: "Star Sports 1",
     lang: "Hindi",
-    src: "https://zee-seven.vercel.app/",
-    badge: "Cinema",
+    src: "https://sonucdn-v5.pages.dev/star?id=H1HD",
+    badge: "Sports",
     color: "#f97316",
   },
   {
@@ -70,7 +70,7 @@ const CHANNELS = [
     name: "Aaj Tak",
     label: "Aaj Tak",
     lang: "Hindi",
-    src: "https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8",
+    src: "https://feeds.intoday.in/livetv/ver-3-0/?id=livetv-at&aud_togle=1&autostart=0&pip_icon=1&v=1.6&debug=false&dimlight=1&mute=0",
     badge: "Aaj Tak",
     color: "#ef4444",
   },
